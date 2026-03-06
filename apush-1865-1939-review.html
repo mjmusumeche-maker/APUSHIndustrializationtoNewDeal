@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>APUSH Review — 1865–1939</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Source+Sans+3:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f5efe6;--bg2:#ebe3d6;--bg3:#e0d5c4;--surface:#fff;--accent:#b45309;--accent2:#92400e;--accent-glow:rgba(180,83,9,0.08);--danger:#dc2626;--warning:#d97706;--text:#1c1917;--text2:#57534e;--text3:#a8a29e;--gold:#b45309;--correct:#16a34a;--wrong:#dc2626;--radius:16px}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:'Source Sans 3',sans-serif;background:var(--bg);color:var(--text);min-height:100dvh;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradient(90deg,rgba(180,83,9,0.03) 0px,rgba(180,83,9,0.03) 1px,transparent 1px,transparent 60px),repeating-linear-gradient(0deg,rgba(180,83,9,0.03) 0px,rgba(180,83,9,0.03) 1px,transparent 1px,transparent 60px);pointer-events:none;z-index:0}
+body::after{content:'';position:fixed;top:0;left:0;right:0;height:300px;background:radial-gradient(ellipse at top,rgba(217,119,6,0.06),transparent 70%);pointer-events:none;z-index:0}
+#app{max-width:480px;margin:0 auto;min-height:100dvh;position:relative;z-index:1}
+.app-header{padding:16px 20px 12px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50;background:linear-gradient(180deg,var(--bg) 60%,transparent);backdrop-filter:blur(10px)}
+.app-logo{font-family:'Playfair Display',serif;font-size:20px;color:var(--accent)}.app-logo span{color:var(--text3);font-size:11px;font-family:'Source Sans 3',sans-serif;font-weight:700;margin-left:6px;letter-spacing:1.5px;text-transform:uppercase}
+.header-stats{display:flex;align-items:center;gap:8px}
+.coin-badge,.streak-badge{display:flex;align-items:center;gap:5px;background:var(--surface);padding:5px 10px;border-radius:20px;font-size:13px;font-weight:600;box-shadow:0 1px 3px rgba(0,0,0,0.06)}
+.coin-badge{color:var(--gold);border:1px solid rgba(180,83,9,0.15)}.streak-badge{color:var(--accent);border:1px solid rgba(180,83,9,0.1)}
+.screen{display:none;padding:0 20px 100px;animation:fadeUp .3s ease}.screen.active{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.hero-card{background:linear-gradient(135deg,#1c1917,#292524);border-radius:var(--radius);padding:28px 24px;margin-bottom:20px;position:relative;overflow:hidden;color:#faf7f2}
+.hero-card::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 20px,rgba(217,119,6,0.05) 20px,rgba(217,119,6,0.05) 21px);pointer-events:none}
+.hero-card::after{content:'1865–1939';position:absolute;right:14px;bottom:10px;font-family:'Playfair Display',serif;font-size:24px;font-weight:800;color:rgba(217,119,6,0.07);letter-spacing:2px}
+.hero-card h2{font-family:'Playfair Display',serif;font-size:24px;margin-bottom:6px;position:relative;color:#faf7f2}
+.hero-card .sub{color:rgba(250,247,242,0.7);font-size:13px;line-height:1.5;position:relative}
+.hero-card .era-tag{display:inline-block;font-size:10px;font-weight:700;color:#d97706;background:rgba(217,119,6,0.12);padding:3px 10px;border-radius:6px;margin-bottom:10px;letter-spacing:1.5px;text-transform:uppercase;position:relative;border:1px solid rgba(217,119,6,0.2)}
+.section-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--text3);margin-bottom:10px;padding-left:2px}
+.topic-grid{display:flex;flex-direction:column;gap:8px;margin-bottom:24px}
+.topic-card{background:var(--surface);border-radius:14px;padding:14px 16px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:all .2s;border:1px solid rgba(0,0,0,0.06);box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+.topic-card:active{transform:scale(0.98)}.topic-card:hover{border-color:var(--accent)}
+.topic-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.topic-info{flex:1}.topic-info h3{font-size:13px;font-weight:600;margin-bottom:1px}.topic-info p{font-size:11px;color:var(--text3)}
+.topic-unit{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--accent);background:var(--accent-glow);padding:3px 8px;border-radius:6px}
+.mode-grid{display:flex;flex-direction:column;gap:8px;margin-bottom:24px}
+.mode-btn{background:var(--surface);border:1px solid rgba(0,0,0,0.06);border-radius:14px;padding:16px 18px;cursor:pointer;color:var(--text);text-align:left;transition:all .2s;display:flex;align-items:center;gap:14px;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+.mode-btn:active{transform:scale(0.98)}.mode-btn:hover{border-color:var(--accent)}
+.mode-btn .icon{font-size:26px}.mode-btn h3{font-size:14px;font-weight:600}.mode-btn p{font-size:12px;color:var(--text3);margin-top:1px}
+.collection-preview{background:var(--surface);border:1px solid rgba(0,0,0,0.06);border-radius:var(--radius);padding:18px;margin-bottom:24px;cursor:pointer;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+.collection-preview:active{transform:scale(0.98)}
+.collection-preview .cp-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.collection-preview h3{font-size:15px;font-weight:600}.collection-preview .cp-count{font-size:13px;color:var(--text3)}
+.cp-mini-cards{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px}
+.cp-mini-card{width:44px;height:60px;border-radius:6px;flex-shrink:0;display:flex;align-items:center;justify-content:center;border:2px solid;overflow:hidden}
+.cp-mini-card img{width:100%;height:100%;object-fit:cover}
+.cp-mini-empty{width:44px;height:60px;border-radius:6px;flex-shrink:0;background:var(--bg2);border:2px dashed rgba(0,0,0,0.08);display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--text3)}
+.collection-complete{background:linear-gradient(135deg,rgba(217,119,6,0.08),rgba(22,163,74,0.06));border:1px solid rgba(217,119,6,0.2);border-radius:14px;padding:16px 18px;margin-bottom:20px;text-align:center}
+.collection-complete h3{font-size:16px;color:var(--gold);margin-bottom:4px}.collection-complete p{font-size:13px;color:var(--text2)}
+/* Quiz */
+.quiz-progress{display:flex;align-items:center;gap:10px;margin-bottom:20px}
+.progress-bar{flex:1;height:6px;background:var(--bg3);border-radius:3px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:3px;transition:width .4s ease}
+.progress-text{font-size:13px;color:var(--text3);font-weight:600}
+.quiz-question-card{background:var(--surface);border-radius:var(--radius);padding:22px 20px;margin-bottom:14px;border:1px solid rgba(0,0,0,0.06);box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+.quiz-topic-tag{font-size:11px;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+.quiz-question{font-size:15px;line-height:1.55;font-weight:500}
+.stimulus-box{background:var(--bg2);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:12px 14px;margin-bottom:12px;font-size:13px;line-height:1.6;color:var(--text2);font-style:italic}
+.stimulus-box .stimulus-source{font-style:normal;font-weight:600;color:var(--text);margin-top:6px;font-size:11px}
+.coin-reward-inline{display:inline-flex;align-items:center;gap:4px;background:rgba(180,83,9,0.08);color:var(--gold);padding:2px 8px;border-radius:10px;font-size:12px;font-weight:600;margin-left:6px}
+.answer-options{display:flex;flex-direction:column;gap:8px;margin-bottom:14px}
+.answer-btn{background:var(--surface);border:2px solid rgba(0,0,0,0.08);border-radius:14px;padding:14px 16px;color:var(--text);font-size:14px;line-height:1.45;cursor:pointer;text-align:left;transition:all .2s;display:flex;gap:12px;align-items:flex-start;font-family:'Source Sans 3',sans-serif;box-shadow:0 1px 2px rgba(0,0,0,0.04)}
+.answer-btn:active{transform:scale(0.98)}.answer-btn:hover:not(.locked){border-color:var(--accent)}
+.answer-letter{font-family:'JetBrains Mono',monospace;font-weight:600;font-size:13px;width:26px;height:26px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:var(--bg2);flex-shrink:0;margin-top:1px}
+.answer-btn.correct{border-color:var(--correct);background:rgba(22,163,74,0.06)}.answer-btn.correct .answer-letter{background:var(--correct);color:#fff}
+.answer-btn.wrong{border-color:var(--wrong);background:rgba(220,38,38,0.04)}.answer-btn.wrong .answer-letter{background:var(--wrong);color:#fff}
+.answer-btn.dimmed{opacity:0.4}
+.explanation-card{background:rgba(22,163,74,0.04);border:1px solid rgba(22,163,74,0.15);border-radius:var(--radius);padding:18px;margin-bottom:14px;animation:fadeUp .3s ease}
+.explanation-card.wrong-exp{background:rgba(220,38,38,0.04);border-color:rgba(220,38,38,0.15)}
+.explanation-card h4{font-size:14px;font-weight:700;margin-bottom:6px}
+.explanation-card p{font-size:13px;color:var(--text2);line-height:1.6}
+.explanation-card .key-concept{margin-top:10px;padding:10px 14px;background:rgba(0,0,0,0.03);border-radius:10px;font-size:13px;color:var(--text);line-height:1.55}
+.key-concept strong{color:var(--accent)}
+.next-btn{width:100%;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border:none;border-radius:14px;padding:15px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Source Sans 3',sans-serif}
+.next-btn:active{transform:scale(0.97)}
+.results-card{background:var(--surface);border-radius:var(--radius);padding:28px 22px;text-align:center;margin-bottom:16px;border:1px solid rgba(0,0,0,0.06)}
+.results-score{font-family:'Playfair Display',serif;font-size:56px;color:var(--accent);line-height:1;margin-bottom:4px}
+.results-label{font-size:13px;color:var(--text3);margin-bottom:16px}
+.results-message{font-size:17px;font-weight:600;margin-bottom:6px}.results-sub{font-size:13px;color:var(--text2)}
+.results-breakdown{display:flex;justify-content:center;gap:20px;margin-top:16px;padding-top:16px;border-top:1px solid rgba(0,0,0,0.06)}
+.breakdown-item{text-align:center}.breakdown-item .num{font-size:22px;font-weight:700}.breakdown-item .lbl{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-top:2px}
+.missed-topics{margin-bottom:16px}
+.missed-topic-card{background:var(--surface);border-radius:12px;padding:12px 14px;margin-bottom:6px;border-left:3px solid var(--warning);cursor:pointer}
+.missed-topic-card h4{font-size:13px;font-weight:600;margin-bottom:2px}.missed-topic-card p{font-size:12px;color:var(--text2)}
+.btn-row{display:flex;gap:8px}.btn-row .next-btn{flex:1}
+.btn-secondary{flex:1;background:var(--surface);color:var(--text);border:1px solid rgba(0,0,0,0.08);border-radius:14px;padding:15px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Source Sans 3',sans-serif}
+.study-card{background:var(--surface);border-radius:var(--radius);padding:20px;margin-bottom:10px;border:1px solid rgba(0,0,0,0.06)}
+.study-card h3{font-family:'Playfair Display',serif;font-size:17px;margin-bottom:10px;color:var(--accent)}
+.study-card p{font-size:13px;color:var(--text2);line-height:1.65}
+.back-btn{background:none;border:none;color:var(--text2);font-size:14px;font-weight:600;cursor:pointer;padding:8px 0;font-family:'Source Sans 3',sans-serif;display:flex;align-items:center;gap:6px;margin-bottom:14px}
+/* Flashcards */
+.flashcard-container{perspective:1000px;margin-bottom:20px}
+.flashcard{width:100%;min-height:280px;position:relative;transform-style:preserve-3d;transition:transform .5s ease;cursor:pointer}
+.flashcard.flipped{transform:rotateY(180deg)}
+.flashcard-face{position:absolute;inset:0;backface-visibility:hidden;border-radius:var(--radius);padding:24px 22px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.flashcard-front{background:var(--surface);border:1px solid rgba(0,0,0,0.08)}
+.flashcard-back{background:#faf7f2;border:1px solid rgba(0,0,0,0.08);transform:rotateY(180deg)}
+.flashcard-front p{font-size:15px;line-height:1.6;color:var(--text2)}
+.flashcard-back h3{font-size:20px;line-height:1.4;color:var(--accent)}
+.flashcard-hint{font-size:12px;color:var(--text3);margin-top:14px}
+.fc-nav{display:flex;gap:10px;justify-content:center}
+.fc-nav button{padding:12px 28px;border-radius:12px;border:none;font-size:14px;font-weight:600;cursor:pointer;font-family:'Source Sans 3',sans-serif}
+.fc-prev{background:var(--bg3);color:var(--text)}.fc-next{background:var(--accent);color:#fff}
+/* POKEMON CARDS — sized for 200px portrait */
+.pack-overlay{position:fixed;inset:0;z-index:200;background:rgba(28,25,23,0.9);display:flex;align-items:center;justify-content:center;flex-direction:column;animation:overlayIn .3s ease;padding:20px;overflow-y:auto}
+@keyframes overlayIn{from{opacity:0}to{opacity:1}}
+.pack-3d-wrapper{perspective:800px;width:220px;height:310px;margin-bottom:24px}
+.pack-card-3d{width:100%;height:100%;position:relative;transform-style:preserve-3d;cursor:pointer;animation:packFloat 2.5s ease-in-out infinite}
+@keyframes packFloat{0%,100%{transform:translateY(0) rotateY(0)}50%{transform:translateY(-8px) rotateY(3deg)}}
+.pack-card-3d.opening{animation:packOpen .6s ease forwards}
+@keyframes packOpen{0%{transform:scale(1) rotateY(0)}40%{transform:scale(1.12) rotateY(10deg)}70%{transform:scale(0.8);opacity:1}100%{transform:scale(0);opacity:0}}
+.pack-face{position:absolute;inset:0;border-radius:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px}
+.pack-front{background:linear-gradient(145deg,#292524,#1c1917);border:3px solid rgba(217,119,6,0.4);box-shadow:0 0 30px rgba(217,119,6,0.1)}
+.pack-front .pack-emblem{font-size:56px;margin-bottom:10px}
+.pack-front h3{font-family:'Playfair Display',serif;font-size:19px;color:#d97706;margin-bottom:4px}
+.pack-front p{font-size:11px;color:#a8a29e}
+.pack-tap{font-size:13px;color:#d97706;margin-top:18px;opacity:.7;animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{opacity:.5}50%{opacity:1}}
+.card-reveal{animation:cardRevealIn .5s ease forwards;text-align:center;width:100%;max-width:340px}
+@keyframes cardRevealIn{from{opacity:0;transform:scale(0.5) rotateY(-30deg)}to{opacity:1;transform:scale(1) rotateY(0)}}
+.reveal-rarity-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:2px;margin-bottom:14px;color:#fff}
+/* The main pokemon card */
+.poke-card{width:280px;margin:0 auto 16px;border-radius:16px;position:relative;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.3)}
+.poke-card-inner{border-radius:13px;margin:4px;position:relative;overflow:hidden;background:#faf7f2}
+.poke-card::before{content:'';position:absolute;inset:0;background:linear-gradient(125deg,transparent 30%,rgba(255,255,255,0.15) 45%,transparent 55%);z-index:10;pointer-events:none;animation:holoShimmer 3s ease-in-out infinite}
+@keyframes holoShimmer{0%{transform:translateX(-100%) translateY(-100%)}100%{transform:translateX(100%) translateY(100%)}}
+.poke-card-header{display:flex;justify-content:space-between;align-items:center;padding:10px 14px 6px;position:relative;z-index:1}
+.poke-card-name{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;flex:1;margin-right:6px}
+.poke-card-hp{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;color:var(--danger);white-space:nowrap}
+.poke-card-element{font-size:16px;margin-left:4px}
+/* Portrait: 200px tall to match teacher photo proportions */
+.poke-card-portrait{width:calc(100% - 20px);margin:0 10px;height:200px;border-radius:8px;position:relative;overflow:hidden;border:2px solid rgba(0,0,0,0.06);background:var(--bg2)}
+.poke-card-portrait img{width:100%;height:100%;object-fit:contain;object-position:center;display:block}
+.poke-card-portrait .img-fallback{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:64px;background:linear-gradient(135deg,var(--bg2),var(--bg3))}
+.poke-card-type-bar{display:flex;justify-content:space-between;align-items:center;padding:5px 14px;font-size:10px}
+.poke-card-type-label{font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:2px 8px;border-radius:8px;color:#fff}
+.poke-card-element-label{font-size:10px;color:var(--text3);font-weight:600}
+.poke-card-info{padding:6px 14px 10px;position:relative;z-index:1}
+.poke-card-title{font-size:11px;color:var(--text2);margin-bottom:3px;line-height:1.3}
+.poke-card-years{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text3);margin-bottom:6px}
+.poke-card-fact{font-size:11px;color:var(--text2);line-height:1.45;background:rgba(0,0,0,0.03);border-radius:8px;padding:8px 10px;border:1px solid rgba(0,0,0,0.05)}
+.poke-card-footer{display:flex;justify-content:space-between;align-items:center;padding:6px 14px 10px;font-size:9px;color:var(--text3)}
+.poke-card-rarity-stars{letter-spacing:2px}.poke-card-number{font-family:'JetBrains Mono',monospace}
+.new-badge{position:absolute;top:8px;right:8px;background:var(--gold);color:#fff;font-size:9px;font-weight:700;padding:2px 8px;border-radius:6px;z-index:12;text-transform:uppercase;letter-spacing:1px}
+.reveal-buttons{display:flex;gap:8px;justify-content:center;margin-top:4px}
+.reveal-buttons button{padding:14px 28px;border-radius:14px;border:none;font-size:14px;font-weight:600;cursor:pointer;font-family:'Source Sans 3',sans-serif}
+.reveal-btn-done{background:var(--accent);color:#fff}
+/* Collection grid */
+.collection-header{text-align:center;padding:10px 0 20px}
+.collection-header h2{font-family:'Playfair Display',serif;font-size:24px;margin-bottom:4px}
+.collection-header p{font-size:13px;color:var(--text3)}
+.rarity-filter{display:flex;gap:4px;overflow-x:auto;padding-bottom:12px;margin-bottom:16px}
+.rf-btn{padding:5px 10px;border-radius:20px;border:1px solid rgba(0,0,0,0.08);background:var(--surface);color:var(--text3);font-size:10px;font-weight:600;cursor:pointer;white-space:nowrap;font-family:'Source Sans 3',sans-serif}
+.rf-btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.card-collection-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:20px}
+.cc-item{border-radius:12px;padding:0;text-align:center;position:relative;cursor:pointer;transition:all .2s;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.08)}
+.cc-item:active{transform:scale(0.96)}
+.cc-item-inner{border-radius:10px;margin:3px;padding:10px 8px;background:#faf7f2}
+.cc-item.locked{opacity:.45}.cc-item.locked .cc-item-inner{background:var(--bg2)}
+.cc-item .cc-img{width:60px;height:60px;border-radius:50%;object-fit:cover;margin:0 auto 6px;display:block;border:2px solid rgba(0,0,0,0.08)}
+.cc-item .cc-name{font-size:11px;font-weight:600;margin-bottom:2px;line-height:1.3}
+.cc-item .cc-rarity{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:1px}
+.cc-item .cc-hp{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--danger);margin-top:2px}
+.particle-container{position:fixed;inset:0;pointer-events:none;z-index:201}
+.particle{position:absolute;width:8px;height:8px;border-radius:50%;animation:particleFly 1s ease-out forwards}
+@keyframes particleFly{0%{transform:translate(0,0) scale(1);opacity:1}100%{transform:translate(var(--dx),var(--dy)) scale(0);opacity:0}}
+.bottom-nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;background:rgba(245,239,230,0.92);backdrop-filter:blur(20px);border-top:1px solid rgba(0,0,0,0.06);display:flex;padding:6px 12px calc(env(safe-area-inset-bottom,6px) + 6px);z-index:100}
+.nav-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 4px;cursor:pointer;color:var(--text3);border:none;background:none;font-family:'Source Sans 3',sans-serif;font-size:10px;font-weight:600;position:relative}
+.nav-item.active{color:var(--accent)}.nav-item svg{width:22px;height:22px}
+.nav-badge{position:absolute;top:2px;right:calc(50% - 18px);background:var(--danger);color:white;font-size:9px;font-weight:700;width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.hidden{display:none!important}.mt-12{margin-top:12px}.mb-16{margin-bottom:16px}
+@keyframes mythicalGlow{0%,100%{box-shadow:0 0 20px rgba(225,29,72,0.3),0 0 40px rgba(225,29,72,0.1)}50%{box-shadow:0 0 30px rgba(225,29,72,0.5),0 0 60px rgba(225,29,72,0.2)}}
+.poke-card.mythical-card{animation:mythicalGlow 2s ease-in-out infinite}
+.loading-screen{text-align:center;padding:60px 20px;color:var(--text3)}
+.loading-screen .spinner{width:40px;height:40px;border:3px solid var(--bg3);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 16px}
+@keyframes spin{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+<div id="app">
+  <header class="app-header">
+    <div class="app-logo">1865–1939<span>APUSH</span></div>
+    <div class="header-stats">
+      <div class="coin-badge">🪙 <span id="coinCount">0</span></div>
+      <div class="streak-badge">⚡ <span id="streakCount">0</span></div>
+    </div>
+  </header>
+  <div class="screen active" id="homeScreen"><div class="loading-screen"><div class="spinner"></div>Loading card images...</div></div>
+  <div class="screen" id="studyScreen"></div>
+  <div class="screen" id="quizScreen"></div>
+  <div class="screen" id="resultsScreen"></div>
+  <div class="screen" id="flashcardScreen"></div>
+  <div class="screen" id="collectionScreen"></div>
+  <nav class="bottom-nav">
+    <button class="nav-item active" onclick="goHome()" id="navHome"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0a1 1 0 01-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1h-2z"/></svg>Home</button>
+    <button class="nav-item" onclick="startQuiz('all')" id="navQuiz"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>Quiz</button>
+    <button class="nav-item" onclick="showCollection()" id="navCards"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M8 4v16"/></svg>Cards<span class="nav-badge hidden" id="navCardsBadge">0</span></button>
+    <button class="nav-item" onclick="startFlashcards()" id="navFlash"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M12 12h.01"/></svg>Study</button>
+  </nav>
+</div>
+<div id="packOverlay"></div>
+<div class="particle-container" id="particles"></div>
+<script>
+// ═══════════════════════════════════════════
+// IMAGE SYSTEM — Wikipedia API + base64 teachers
+// ═══════════════════════════════════════════
+const WIKI_TITLES={
+  c01:'Andrew_Carnegie',c02:'John_D._Rockefeller',c03:'J._P._Morgan',
+  c04:'Samuel_Gompers',c05:'Upton_Sinclair',c06:'William_Jennings_Bryan',
+  c07:'Plessy_v._Ferguson',c08:'Homestead_strike',c09:'Pullman_Strike',
+  c10:'Chinese_Exclusion_Act',c11:'Warren_G._Harding',c12:'Dawes_Act',
+  u01:'W._E._B._Du_Bois',u02:'Booker_T._Washington',u03:'Jane_Addams',
+  u04:'Ida_B._Wells',u05:'Henry_Ford',u06:'Triangle_Shirtwaist_Factory_fire',
+  u07:'Spanish%E2%80%93American_War',u08:'Panama_Canal',
+  u09:'Scopes_Trial',u10:'Nineteenth_Amendment_to_the_United_States_Constitution',
+  r01:'Woodrow_Wilson',r02:'Frances_Perkins',r03:'Eugene_V._Debs',
+  r04:'Ida_Tarbell',r05:'Social_Security_Act',r06:'Treaty_of_Versailles',
+  r07:'Harlem_Renaissance',r08:'First_transcontinental_railroad',
+  e01:'Eleanor_Roosevelt',e02:'Great_Migration_(African_American)',
+  e03:'Marcus_Garvey',e04:'Wounded_Knee_Massacre',
+  l01:'Theodore_Roosevelt',l02:'Franklin_D._Roosevelt',
+  x01:'Huey_Long',x02:'Haymarket_affair'
+};
+
+const TEACHER_IMGS={
+  m01:'data:image/jpeg;base64,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',
+  m02:'data:image/jpeg;base64,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'
+};
+
+const IMG_CACHE={m01:TEACHER_IMGS.m01,m02:TEACHER_IMGS.m02};
+
+async function loadImages(){
+  const entries=Object.entries(WIKI_TITLES);
+  const results=await Promise.allSettled(
+    entries.map(async([id,title])=>{
+      try{
+        const r=await fetch('https://en.wikipedia.org/api/rest_v1/page/summary/'+title);
+        if(!r.ok)return;
+        const d=await r.json();
+        if(d.thumbnail&&d.thumbnail.source){
+          // Request larger thumbnail by replacing size in URL
+          let url=d.thumbnail.source;
+          url=url.replace(/\/\d+px-/,'/600px-');
+          IMG_CACHE[id]=url;
+        }else if(d.originalimage&&d.originalimage.source){
+          IMG_CACHE[id]=d.originalimage.source;
+        }
+      }catch(e){}
+    })
+  );
+  return Object.keys(IMG_CACHE).length;
+}
+
+function getCardImg(id){return IMG_CACHE[id]||'';}
+
+// ═══════════════════════════════════════════
+// CONFIG
+// ═══════════════════════════════════════════
+const ELEMENTS={industry:{icon:'⚡',name:'Industry'},justice:{icon:'⚖️',name:'Justice'},conflict:{icon:'🔥',name:'Conflict'},order:{icon:'🏛️',name:'Order'},reform:{icon:'🌿',name:'Reform'},commerce:{icon:'💰',name:'Commerce'},labor:{icon:'✊',name:'Labor'},culture:{icon:'✨',name:'Culture'}};
+
+const RARITY_CONFIG={
+  common:{label:'Common',color:'#78716c',bg:'rgba(120,113,108,0.06)',border:'rgba(120,113,108,0.2)',weight:40},
+  uncommon:{label:'Uncommon',color:'#16a34a',bg:'rgba(22,163,74,0.06)',border:'rgba(22,163,74,0.2)',weight:28},
+  rare:{label:'Rare',color:'#2563eb',bg:'rgba(37,99,235,0.06)',border:'rgba(37,99,235,0.2)',weight:18},
+  epic:{label:'Epic',color:'#9333ea',bg:'rgba(147,51,234,0.06)',border:'rgba(147,51,234,0.2)',weight:10},
+  legendary:{label:'Legendary',color:'#d97706',bg:'rgba(217,119,6,0.06)',border:'rgba(217,119,6,0.2)',weight:4},
+  mythical:{label:'Mythical',color:'#e11d48',bg:'rgba(225,29,72,0.06)',border:'rgba(225,29,72,0.25)',weight:1},
+};
+const PACK_COST=3;
+
+// ═══════════════════════════════════════════
+// 40 COLLECTIBLE CARDS
+// ═══════════════════════════════════════════
+const COLLECTIBLE_CARDS=[
+  // COMMON 12+1=13
+  {id:'c01',name:'Andrew Carnegie',type:'person',title:'Steel Baron and Philanthropist',years:'1835–1919',rarity:'common',element:'commerce',hp:65,fact:'Built U.S. Steel into a monopoly. "Gospel of Wealth" argued the rich must give back. Funded thousands of libraries.'},
+  {id:'c02',name:'John D. Rockefeller',type:'person',title:'Standard Oil Founder',years:'1839–1937',rarity:'common',element:'commerce',hp:70,fact:'Controlled 90% of U.S. oil refining by 1880. Ruthless monopolist and the era\'s greatest philanthropist.'},
+  {id:'c03',name:'J.P. Morgan',type:'person',title:'Banker and Financier',years:'1837–1913',rarity:'common',element:'commerce',hp:65,fact:'Bailed out the U.S. Treasury in 1895 and organized U.S. Steel. Controlled railroads, banks, and industries.'},
+  {id:'c04',name:'Samuel Gompers',type:'person',title:'AFL Founder',years:'1850–1924',rarity:'common',element:'labor',hp:55,fact:'Founded the AFL. Focused on wages, hours, and conditions for skilled workers only. Rejected radical politics.'},
+  {id:'c05',name:'Upton Sinclair',type:'person',title:'Author of The Jungle',years:'1878–1968',rarity:'common',element:'reform',hp:45,fact:'Wrote The Jungle (1906) to expose labor abuses. Public outrage over food safety led to the Meat Inspection Act instead.'},
+  {id:'c06',name:'William J. Bryan',type:'person',title:'"Cross of Gold" Orator',years:'1860–1925',rarity:'common',element:'order',hp:50,fact:'"You shall not crucify mankind upon a cross of gold!" Lost three elections but gave voice to Populist farmers.'},
+  {id:'c07',name:'Plessy v. Ferguson',type:'event',title:'"Separate but Equal"',years:'1896',rarity:'common',element:'justice',hp:60,fact:'Supreme Court ruled "separate but equal" was constitutional. Legalized Jim Crow for 58 years.'},
+  {id:'c08',name:'Homestead Strike',type:'event',title:'Steel Workers vs. Carnegie',years:'1892',rarity:'common',element:'conflict',hp:55,fact:'Carnegie\'s steel workers struck over wage cuts. Frick hired Pinkertons; 16 died. The union was crushed.'},
+  {id:'c09',name:'Pullman Strike',type:'event',title:'Railroad Boycott',years:'1894',rarity:'common',element:'conflict',hp:55,fact:'Workers struck over wage cuts; Debs led a national railroad boycott. Federal troops broke the strike.'},
+  {id:'c10',name:'Chinese Exclusion Act',type:'event',title:'First Immigration Ban by Nationality',years:'1882',rarity:'common',element:'justice',hp:50,fact:'First federal law restricting immigration by nationality. Barred Chinese laborers for over 60 years.'},
+  {id:'c11',name:'Warren G. Harding',type:'person',title:'29th President',years:'1865–1923',rarity:'common',element:'order',hp:40,fact:'Promised a "return to normalcy." Pro-business, but his presidency was marred by the Teapot Dome scandal.'},
+  {id:'c12',name:'Dawes Act',type:'event',title:'Allotment of Tribal Lands',years:'1887',rarity:'common',element:'justice',hp:45,fact:'Broke up tribal lands into individual plots. Aimed to assimilate Native Americans; caused massive land loss.'},
+  {id:'x02',name:'Haymarket Affair',type:'event',title:'Bomb at a Labor Rally',years:'1886',rarity:'common',element:'conflict',hp:55,fact:'Bomb at a Chicago labor rally killed police and workers. Set back the labor movement and led to executions of activists.'},
+
+  // UNCOMMON 10+1=11
+  {id:'u01',name:'W.E.B. Du Bois',type:'person',title:'NAACP Co-Founder',years:'1868–1963',rarity:'uncommon',element:'justice',hp:85,fact:'Rejected Washington\'s gradualism. Demanded full rights now. Co-founded the NAACP and wrote The Souls of Black Folk.'},
+  {id:'u02',name:'Booker T. Washington',type:'person',title:'Tuskegee Founder',years:'1856–1915',rarity:'uncommon',element:'culture',hp:70,fact:'Advocated vocational education and self-reliance. Atlanta Compromise (1895) accepted segregation temporarily.'},
+  {id:'u03',name:'Jane Addams',type:'person',title:'Hull House Founder',years:'1860–1935',rarity:'uncommon',element:'reform',hp:80,fact:'Founded Hull House (1889) in Chicago — education, healthcare, childcare for immigrants. Won the Nobel Peace Prize.'},
+  {id:'u04',name:'Ida B. Wells',type:'person',title:'Anti-Lynching Crusader',years:'1862–1931',rarity:'uncommon',element:'justice',hp:85,fact:'Documented the epidemic of lynching through investigative journalism. Helped found the NAACP.'},
+  {id:'u05',name:'Henry Ford',type:'person',title:'Assembly Line Pioneer',years:'1863–1947',rarity:'uncommon',element:'industry',hp:80,fact:'Perfected the assembly line. Model T cost \60 by 1924. His \ workday created a consumer middle class.'},
+  {id:'u06',name:'Triangle Shirtwaist Fire',type:'event',title:'Workplace Safety Disaster',years:'1911',rarity:'uncommon',element:'conflict',hp:75,fact:'146 garment workers died because exits were locked. Sparked workplace safety laws and building codes nationwide.'},
+  {id:'u07',name:'Spanish-American War',type:'event',title:'America Becomes Imperial',years:'1898',rarity:'uncommon',element:'conflict',hp:80,fact:'U.S. gained Puerto Rico, Guam, and the Philippines. America became an imperial power. "Remember the Maine!"'},
+  {id:'u08',name:'Panama Canal',type:'event',title:'Connecting Two Oceans',years:'1904–1914',rarity:'uncommon',element:'industry',hp:75,fact:'TR backed Panama\'s independence, then built the canal. Connected the Atlantic and Pacific oceans.'},
+  {id:'u09',name:'Scopes Trial',type:'event',title:'Evolution on Trial',years:'1925',rarity:'uncommon',element:'culture',hp:65,fact:'Tennessee teacher tried for teaching evolution. Symbolized the clash of urban modernism and rural fundamentalism.'},
+  {id:'u10',name:'19th Amendment',type:'event',title:'Women Win the Vote',years:'1920',rarity:'uncommon',element:'justice',hp:90,fact:'Women won the vote after 72 years of activism from Seneca Falls through hunger strikes and prison.'},
+  {id:'x01',name:'Huey Long',type:'person',title:'Louisiana "Kingfish"',years:'1893–1935',rarity:'uncommon',element:'order',hp:75,fact:'Challenged FDR from the left. "Share Our Wealth" — cap fortunes, give every family \,000. Assassinated in 1935.'},
+
+  // RARE 8
+  {id:'r01',name:'Woodrow Wilson',type:'person',title:'28th President',years:'1856–1924',rarity:'rare',element:'order',hp:100,fact:'Led America into WWI for democracy. Created the Federal Reserve. His 14 Points and League of Nations failed in the Senate.'},
+  {id:'r02',name:'Frances Perkins',type:'person',title:'Secretary of Labor',years:'1880–1965',rarity:'rare',element:'reform',hp:95,fact:'First woman in a presidential cabinet. Architect of Social Security, minimum wage, 40-hour week, and child labor bans.'},
+  {id:'r03',name:'Eugene V. Debs',type:'person',title:'Socialist and Labor Leader',years:'1855–1926',rarity:'rare',element:'labor',hp:90,fact:'Led the Pullman Strike, jailed for it. Ran for president five times — once from prison, earning nearly a million votes.'},
+  {id:'r04',name:'Ida Tarbell',type:'person',title:'Muckraker Journalist',years:'1857–1944',rarity:'rare',element:'reform',hp:85,fact:'Her History of Standard Oil exposed Rockefeller\'s monopoly. Pioneered investigative journalism and helped break up the trust.'},
+  {id:'r05',name:'Social Security Act',type:'event',title:'Safety Net Created',years:'1935',rarity:'rare',element:'order',hp:110,fact:'Created pensions, unemployment insurance, and aid to children. Excluded domestic and farm workers. Still the bedrock of the safety net.'},
+  {id:'r06',name:'Treaty of Versailles',type:'event',title:'End of World War I',years:'1919',rarity:'rare',element:'conflict',hp:100,fact:'Imposed war guilt, reparations, and territory loss on Germany. U.S. Senate rejected it. America never joined the League of Nations.'},
+  {id:'r07',name:'Harlem Renaissance',type:'event',title:'Black Cultural Flowering',years:'1920s–1930s',rarity:'rare',element:'culture',hp:95,fact:'African American art, literature, jazz, and poetry. Hughes, Hurston, Ellington — Black culture redefined America.'},
+  {id:'r08',name:'Transcontinental Railroad',type:'event',title:'Golden Spike at Promontory',years:'1869',rarity:'rare',element:'industry',hp:105,fact:'Connected the coasts. Revolutionized commerce and opened the West. Built by Chinese and Irish labor under brutal conditions.'},
+
+  // EPIC 4
+  {id:'e01',name:'Eleanor Roosevelt',type:'person',title:'First Lady and Activist',years:'1884–1962',rarity:'epic',element:'reform',hp:120,fact:'Redefined the First Lady role. Championed civil rights, women\'s rights, and the poor as FDR\'s "eyes and ears" across America.'},
+  {id:'e02',name:'The Great Migration',type:'event',title:'6 Million Move North',years:'1910–1970',rarity:'epic',element:'justice',hp:130,fact:'6 million African Americans left the South for Northern cities. Transformed American culture, politics, and demographics.'},
+  {id:'e03',name:'Marcus Garvey',type:'person',title:'UNIA and Pan-Africanism',years:'1887–1940',rarity:'epic',element:'culture',hp:110,fact:'Built the largest Black mass movement in history. "Back to Africa," Black Star Line, UNIA. Inspired Black pride and self-reliance.'},
+  {id:'e04',name:'Wounded Knee Massacre',type:'event',title:'End of Native Resistance',years:'1890',rarity:'epic',element:'conflict',hp:100,fact:'U.S. soldiers killed 250+ Lakota Sioux including women and children. End of Native armed resistance on the Plains.'},
+
+  // LEGENDARY 2
+  {id:'l01',name:'Theodore Roosevelt',type:'person',title:'26th President',years:'1858–1919',rarity:'legendary',element:'reform',hp:150,fact:'Trust-buster, conservationist, Rough Rider. "Speak softly and carry a big stick." Built the Panama Canal and expanded presidential power.'},
+  {id:'l02',name:'Franklin D. Roosevelt',type:'person',title:'32nd President',years:'1882–1945',rarity:'legendary',element:'order',hp:160,fact:'Elected four times. Led America through the Depression and WWII. His New Deal permanently transformed the federal government\'s role.'},
+
+  // MYTHICAL 2
+  {id:'m01',name:'Mr. Musumeche',type:'person',title:'APUSH Legend',years:'Era of Greatness',rarity:'mythical',element:'culture',hp:999,fact:'They say if you listen closely during the AP exam, you can hear his voice guiding you through every FRQ. The rarest card in the collection.'},
+  {id:'m02',name:'Mrs. Spikes',type:'person',title:'Architect of 5s',years:'Era of Greatness',rarity:'mythical',element:'culture',hp:999,fact:'Her lectures echo through time itself. Students who pull this card gain +10 on every DBQ. She once turned a 2 into a 5 with a single comment.'},
+];
+const TOPICS=[
+  {id:'T1',title:'The Gilded Age',icon:'💎',color:'#b45309',content:[
+    {heading:'What Was the Gilded Age?',text:'Mark Twain coined the term — glittering on the surface, corrupt underneath. Rapid economic growth alongside political corruption, extreme inequality, and exploitation.'},
+    {heading:'Political Machines',text:'Urban bosses like <strong>Boss Tweed</strong> (Tammany Hall) traded services for votes. Corruption was rampant, but machines also helped immigrants navigate city life.'},
+    {heading:'Populism',text:'Farmers organized against railroads, banks, and deflation. The <strong>Populist Party</strong> demanded silver coinage, income tax, and direct election of senators. Bryan\'s "Cross of Gold" speech (1896) captured their anger.'},
+    {heading:'Jim Crow & Plessy',text:'<strong>Plessy v. Ferguson</strong> (1896) legalized segregation under "separate but equal." Black Codes, poll taxes, literacy tests, and the KKK enforced white supremacy across the South.'}
+  ]},
+  {id:'T2',title:'Industrialization',icon:'🏭',color:'#92400e',content:[
+    {heading:'Captains or Robber Barons?',text:'<strong>Carnegie</strong> (steel), <strong>Rockefeller</strong> (oil), <strong>Morgan</strong> (banking) built monopolies. Were they innovators who built America, or exploiters who crushed competition and workers?'},
+    {heading:'New Business Strategies',text:'<strong>Vertical integration</strong> (Carnegie controlled raw materials to finished product) and <strong>horizontal integration</strong> (Rockefeller bought out competitors). Trusts and holding companies concentrated power.'},
+    {heading:'Technology & Growth',text:'The <strong>Transcontinental Railroad</strong> (1869), Bessemer steel process, telephone, and electricity transformed the economy. America surpassed Britain in industrial output by 1900.'},
+    {heading:'Gospel of Wealth',text:'Carnegie argued the rich had a <strong>duty to give back</strong>. Social Darwinists said poverty was natural. Critics demanded government regulation instead of charity.'}
+  ]},
+  {id:'T3',title:'Urbanization',icon:'🏙️',color:'#d97706',content:[
+    {heading:'City Growth',text:'Cities exploded — Chicago grew from 300,000 to 1.7 million in 20 years. Skyscrapers, streetcars, and department stores transformed urban life.'},
+    {heading:'Living Conditions',text:'Tenements packed families into tiny, dark rooms. Disease, fire, and crime were rampant. Jacob Riis\'s <strong>How the Other Half Lives</strong> (1890) shocked Americans with photos of slum conditions.'},
+    {heading:'Settlement Houses',text:'<strong>Jane Addams</strong> founded Hull House (1889) to serve immigrants — education, childcare, healthcare. Settlement houses became models for Progressive social work.'},
+    {heading:'Political Machines',text:'Machine bosses provided jobs, housing, and services in exchange for votes. Corrupt but functional — they filled a gap that government didn\'t.'}
+  ]},
+  {id:'T4',title:'Immigration',icon:'🗽',color:'#2563eb',content:[
+    {heading:'Old vs. New Immigration',text:'Before 1880: mostly Northern/Western Europeans. After 1880: <strong>Southern and Eastern Europeans</strong> (Italians, Poles, Jews, Greeks) plus Asians. Different languages, religions, customs.'},
+    {heading:'Push & Pull Factors',text:'<strong>Push:</strong> poverty, religious persecution, political instability. <strong>Pull:</strong> jobs, land, freedom, family already in America. Most came through Ellis Island (East) or Angel Island (West).'},
+    {heading:'Nativism',text:'<strong>Chinese Exclusion Act</strong> (1882) banned Chinese laborers. Nativists feared immigrants would take jobs and change American culture. The Immigration Act of 1924 set strict quotas.'},
+    {heading:'Immigrant Experience',text:'Immigrants settled in ethnic neighborhoods. They faced discrimination but built communities, started businesses, and shaped American culture — food, music, language, traditions.'}
+  ]},
+  {id:'T5',title:'The Labor Movement',icon:'⚒️',color:'#dc2626',content:[
+    {heading:'Working Conditions',text:'12–16 hour days, 6–7 days a week. Dangerous factories, child labor, poverty wages. No safety regulations, no workers\' compensation, no job security.'},
+    {heading:'Early Unions',text:'<strong>Knights of Labor</strong> welcomed all workers (including women and Black workers). <strong>AFL</strong> (Gompers) focused on skilled workers and "bread and butter" issues — wages, hours, conditions.'},
+    {heading:'Major Strikes',text:'<strong>Haymarket</strong> (1886): bomb at a Chicago rally set back labor. <strong>Homestead</strong> (1892): Pinkertons vs. steelworkers. <strong>Pullman</strong> (1894): federal troops broke the railroad boycott.'},
+    {heading:'Government Sided With Business',text:'Courts used <strong>injunctions</strong> to break strikes. Federal troops were deployed against workers. The pattern: labor strikes, business calls for help, government intervenes against workers.'}
+  ]},
+  {id:'T6',title:'Imperialism',icon:'🌍',color:'#9333ea',content:[
+    {heading:'Why Expand?',text:'Economic markets, military bases, "civilizing" mission (Social Darwinism), yellow journalism. Alfred Thayer Mahan argued sea power was the key to national greatness.'},
+    {heading:'Spanish-American War (1898)',text:'"Remember the Maine!" The U.S. gained <strong>Puerto Rico, Guam, Philippines</strong>. Cuba became a protectorate. America was now an imperial power with overseas colonies.'},
+    {heading:'Roosevelt Corollary',text:'TR expanded the Monroe Doctrine: the U.S. would act as "international police" in Latin America. Justified intervention in the Caribbean and Central America.'},
+    {heading:'Panama Canal',text:'TR supported Panama\'s independence from Colombia, then built the <strong>canal</strong> (completed 1914). A triumph of engineering that connected two oceans and projected American power.'}
+  ]},
+  {id:'T7',title:'Progressivism',icon:'🌿',color:'#16a34a',content:[
+    {heading:'The Progressive Impulse',text:'Middle-class reformers attacked corruption, inequality, and exploitation. They believed government should actively solve social problems. Not one movement — many overlapping ones.'},
+    {heading:'Muckrakers',text:'Journalists exposed abuses: <strong>Upton Sinclair</strong> (meatpacking), <strong>Ida Tarbell</strong> (Standard Oil), Jacob Riis (slums), Lincoln Steffens (political corruption). Their writing drove legislation.'},
+    {heading:'Key Reforms',text:'<strong>16th Amendment</strong> (income tax), <strong>17th</strong> (direct election of senators), <strong>18th</strong> (Prohibition), <strong>19th</strong> (women\'s suffrage). Pure Food and Drug Act, Clayton Antitrust Act.'},
+    {heading:'TR vs. Wilson',text:'<strong>TR\'s "Square Deal":</strong> trust-busting, conservation, consumer protection. <strong>Wilson\'s "New Freedom":</strong> Federal Reserve, FTC, Clayton Act. Both expanded presidential power.'}
+  ]},
+  {id:'T8',title:'World War I',icon:'⚔️',color:'#dc2626',content:[
+    {heading:'Road to War',text:'U.S. stayed neutral until 1917. <strong>Unrestricted submarine warfare</strong> sank American ships. The <strong>Zimmermann Telegram</strong> (Germany\'s offer to Mexico) outraged the public. Wilson asked for war.'},
+    {heading:'Home Front',text:'<strong>Espionage and Sedition Acts</strong> crushed dissent — people jailed for criticizing the war. The <strong>Great Migration</strong> accelerated as Black Southerners moved north for factory jobs.'},
+    {heading:'Wilson\'s Vision',text:'<strong>14 Points</strong>: self-determination, free trade, League of Nations. Wilson wanted "peace without victory." But the <strong>Treaty of Versailles</strong> imposed harsh terms on Germany.'},
+    {heading:'Aftermath',text:'Senate rejected the Treaty and the League of Nations. America retreated into <strong>isolationism</strong>. The Red Scare (Palmer Raids) targeted radicals and immigrants.'}
+  ]},
+  {id:'T9',title:'The Roaring Twenties',icon:'🎷',color:'#d97706',content:[
+    {heading:'Consumer Culture',text:'Mass production (Ford), radio, movies, advertising, and <strong>credit buying</strong> fueled a boom. The automobile transformed American life — suburbs, highways, freedom.'},
+    {heading:'Cultural Tensions',text:'<strong>Scopes Trial</strong> (evolution vs. fundamentalism), <strong>Prohibition</strong> (18th Amendment), KKK revival, <strong>Immigration Act of 1924</strong> (quotas). Urban modernism vs. rural tradition.'},
+    {heading:'Harlem Renaissance',text:'A flowering of <strong>Black art, literature, and jazz</strong>. Langston Hughes, Zora Neale Hurston, Duke Ellington, Louis Armstrong. Celebrated Black identity and culture.'},
+    {heading:'Seeds of Collapse',text:'Stock speculation, overproduction, farm debt, banking weaknesses. Wealth concentrated at the top. The bubble burst with the <strong>1929 crash</strong>.'}
+  ]},
+  {id:'T10',title:'Depression & New Deal',icon:'📻',color:'#2563eb',content:[
+    {heading:'The Crash',text:'Stock market crash (Oct 1929), 9,000+ bank failures, 25% unemployment. Hoover\'s "rugged individualism" failed. The <strong>Bonus Army</strong> (1932) destroyed him politically.'},
+    {heading:'FDR & the First New Deal',text:'Bank holiday, then 15 bills in 100 days: <strong>FDIC, CCC, AAA, TVA, NRA</strong>. Goals: <strong>Relief, Recovery, Reform</strong>. Fireside chats built public trust.'},
+    {heading:'Second New Deal',text:'<strong>WPA</strong> (8.5M employed), <strong>Social Security Act</strong>, <strong>Wagner Act</strong> (union rights). Pushed left by critics like <strong>Huey Long</strong>. Frances Perkins designed the safety net.'},
+    {heading:'Legacy',text:'Didn\'t end the Depression — <strong>WWII did</strong>. But permanently expanded federal power, created the safety net, and built the <strong>New Deal Coalition</strong> that dominated politics for 30 years.'}
+  ]},
+  {id:'T11',title:'Western Migration & Native Americans',icon:'🏔️',color:'#78716c',content:[
+    {heading:'Westward Expansion',text:'The <strong>Homestead Act</strong> (1862) offered 160 acres of free land to settlers willing to farm it. Railroads, mining booms, and cattle ranching drew millions west. The frontier was declared "closed" by the Census Bureau in 1890.'},
+    {heading:'Transcontinental Railroad',text:'Completed in 1869 at <strong>Promontory Summit, Utah</strong>. Connected the coasts, opened the West to settlement, and devastated the buffalo herds that Plains Indians depended on. Built by Chinese and Irish immigrant labor under brutal conditions.'},
+    {heading:'Conflict with Native Americans',text:'As settlers moved west, the U.S. military fought <strong>Indian Wars</strong> across the Plains. Key conflicts: Sand Creek Massacre (1864), Battle of Little Bighorn (1876), and the <strong>Wounded Knee Massacre</strong> (1890), which marked the end of armed Native resistance.'},
+    {heading:'Assimilation & the Dawes Act',text:'The <strong>Dawes Act</strong> (1887) broke up tribal lands into individual plots, aiming to "Americanize" Native Americans by turning them into farmers. It destroyed communal landholding and resulted in the loss of nearly two-thirds of Native-held land. <strong>Boarding schools</strong> like Carlisle forced Native children to abandon their languages and cultures — "Kill the Indian, save the man."'}
+  ]}
+];
+
+const QUESTIONS=[
+  // ═══ T1 GILDED AGE (4) ═══
+  {topic:'T1',q:'What did "Gilded Age" mean as Mark Twain used it?',options:['A golden era of equality and justice','A period that glittered on the surface but was corrupt underneath','A time of small government and minimal growth','An age named after a popular gold rush'],correct:1,explanation:'Twain meant America looked prosperous but was rotten with corruption, inequality, and exploitation underneath.',concept:'<strong>Gilded = gold-coated but not solid gold.</strong> Wealth on top, suffering below.'},
+  {topic:'T1',stimulus:{text:'"The white race deems itself to be the dominant race in this country. But in the view of the Constitution, in the eye of the law, there is in this country no superior, dominant, ruling class of citizens."',source:'Justice John Marshall Harlan, dissent in Plessy v. Ferguson, 1896'},q:'Harlan\'s dissent argued that the Constitution:',options:['Supports racial segregation as a state right','Does not recognize any racial hierarchy in law','Gives Congress the power to segregate schools','Allows separate but truly equal facilities'],correct:1,explanation:'Harlan was the lone dissenter — he argued the Constitution was "color-blind" and did not permit legal racial separation.',concept:'<strong>Harlan\'s dissent</strong> foreshadowed Brown v. Board of Education (1954).'},
+  {topic:'T1',q:'Political machines like Tammany Hall maintained power by:',options:['Winning support through strict enforcement of anti-corruption laws','Trading services like jobs and housing for immigrant votes','Refusing to work with immigrant communities in cities','Running candidates exclusively from the wealthy upper class'],correct:1,explanation:'Machine bosses provided real services — jobs, housing, help with citizenship — in exchange for loyal votes at the polls.',concept:'<strong>Political machines:</strong> Corrupt but functional. They served immigrants where government didn\'t.'},
+  {topic:'T1',q:'The Populist movement primarily represented the interests of:',options:['Urban factory workers in Northern cities','Farmers who felt exploited by railroads and banks','Wealthy industrialists seeking lower taxes','Southern planters who wanted to restore slavery'],correct:1,explanation:'Populists were largely farmers crushed by debt, deflation, and railroad price-gouging. They demanded silver coinage and government regulation.',concept:'<strong>Populism = farmers vs. railroads and banks.</strong> Bryan\'s "Cross of Gold" captured their anger.'},
+
+  // ═══ T2 INDUSTRIALIZATION (4) ═══
+  {topic:'T2',q:'Carnegie and Rockefeller are debated because:',options:['Both were elected to political office','They built monopolies but also gave away fortunes','They only employed immigrant child laborers','Neither affected the American economy'],correct:1,explanation:'"Robber barons" who crushed competition and workers, OR "captains of industry" who built the economy and gave back.',concept:'<strong>Robber baron vs. captain of industry</strong> — the central Gilded Age debate.'},
+  {topic:'T2',stimulus:{text:'"The man who dies thus rich dies disgraced."',source:'Andrew Carnegie, "The Gospel of Wealth," 1889'},q:'Carnegie\'s statement reflects the belief that:',options:['Wealthy people should pay higher taxes to the government','The rich have a moral duty to use their wealth for public good','Poverty is a personal failing that charity cannot fix','Government should redistribute all private wealth equally'],correct:1,explanation:'Carnegie believed the wealthy had a responsibility to give back through philanthropy, not government redistribution.',concept:'<strong>Gospel of Wealth:</strong> The rich should be stewards, not hoarders, of their fortune.'},
+  {topic:'T2',q:'Vertical integration, as practiced by Carnegie, means:',options:['Buying out all competing companies in the same industry','Controlling every stage of production from raw materials to finished product','Forming a secret agreement between companies to fix prices','Selling stock to the public to raise capital for expansion'],correct:1,explanation:'Carnegie owned the iron mines, the ships, the railroads, and the steel mills — controlling the entire supply chain.',concept:'<strong>Vertical integration</strong> (Carnegie) vs. <strong>horizontal integration</strong> (Rockefeller buying competitors).'},
+  {topic:'T2',q:'Social Darwinists used Charles Darwin\'s ideas to argue that:',options:['Government should regulate business to protect workers','The wealthy succeeded because they were naturally superior','All people deserved equal economic opportunities','Labor unions were essential for a healthy economy'],correct:1,explanation:'Social Darwinists applied "survival of the fittest" to economics, arguing poverty was natural and government aid was harmful.',concept:'<strong>Social Darwinism</strong> justified inequality as natural and opposed government intervention.'},
+
+  // ═══ T3 URBANIZATION (4) ═══
+  {topic:'T3',q:'Settlement houses like Hull House aimed to:',options:['Restrict immigration to America','Provide services to immigrants and the urban poor','Help factory owners recruit cheap labor','Convert immigrants to Protestantism'],correct:1,explanation:'Jane Addams founded Hull House to offer education, childcare, and healthcare to immigrant communities.',concept:'<strong>Settlement houses</strong> = Progressive reform from the ground up.'},
+  {topic:'T3',stimulus:{text:'"Look into any of these houses, everywhere the same piles of rags, the same squalor and stifling filth."',source:'Jacob Riis, How the Other Half Lives, 1890'},q:'Riis\'s work is best described as an example of:',options:['Social Darwinist philosophy supporting the status quo','Muckraking journalism designed to expose social problems','A government report ordering new housing regulations','Propaganda created by political machines to gain votes'],correct:1,explanation:'Riis used photography and vivid writing to shock middle-class Americans into demanding tenement reform.',concept:'<strong>Riis = muckraker.</strong> Used journalism and photography to drive reform.'},
+  {topic:'T3',q:'The rapid growth of American cities in the late 1800s was primarily driven by:',options:['Government programs that paid people to move to cities','Industrialization creating factory jobs and immigrant arrivals','The end of farming across the entire United States','A federal law requiring all citizens to live in urban areas'],correct:1,explanation:'Factories needed workers, and millions of immigrants plus rural Americans moved to cities for jobs.',concept:'<strong>Industrialization + immigration = explosive urban growth.</strong>'},
+  {topic:'T3',q:'Tenement housing in the Gilded Age was characterized by:',options:['Spacious rooms with modern plumbing and electricity','Overcrowding, poor ventilation, and high disease rates','Government-subsidized apartments for working families','Clean and safe conditions regulated by building codes'],correct:1,explanation:'Tenements crammed dozens of families into tiny, dark, poorly ventilated buildings with shared outhouses.',concept:'<strong>Tenements</strong> = overcrowded, unsanitary, dangerous. Riis exposed these conditions.'},
+
+  // ═══ T4 IMMIGRATION (4) ═══
+  {topic:'T4',q:'The Chinese Exclusion Act (1882) was significant because:',options:['It encouraged unlimited Asian immigration','It was the first law restricting immigration by nationality','It applied equally to all immigrant groups','It was vetoed and never took effect'],correct:1,explanation:'First law to ban a specific nationality. Set the precedent for future immigration restrictions.',concept:'<strong>Chinese Exclusion Act</strong> = first race-based immigration ban.'},
+  {topic:'T4',q:'"New Immigrants" after 1880 mainly came from:',options:['Northern and Western Europe exclusively','Southern and Eastern Europe and Asia','Canada and Mexico only','Africa and South America primarily'],correct:1,explanation:'Italians, Poles, Jews, Greeks, and Chinese — different from earlier Irish/German waves in language, religion, and culture.',concept:'<strong>New Immigrants</strong> = Southern/Eastern Europe + Asia. Fueled nativist backlash.'},
+  {topic:'T4',q:'Ellis Island and Angel Island were significant because they:',options:['Were the main ports where immigrants entered the United States','Served as permanent housing for all new immigrants','Were factories where immigrants were required to work','Were military bases that turned away all immigrants'],correct:0,explanation:'Ellis Island (New York, East Coast) and Angel Island (San Francisco, West Coast) were the major immigration processing centers.',concept:'<strong>Ellis Island</strong> = East Coast entry. <strong>Angel Island</strong> = West Coast entry (harsher conditions for Asians).'},
+  {topic:'T4',q:'Nativist opposition to immigration was primarily based on:',options:['Concerns about job competition and cultural differences','A desire to increase the diversity of the population','Support for open borders and free movement of people','Scientific evidence that immigration helped the economy'],correct:0,explanation:'Nativists feared immigrants would take jobs, lower wages, and change American culture. This drove laws like the Chinese Exclusion Act and 1924 Immigration Act.',concept:'<strong>Nativism</strong> = fear of immigrants. Led to exclusion laws and quotas.'},
+
+  // ═══ T5 LABOR (4) ═══
+  {topic:'T5',q:'Government typically responded to strikes by:',options:['Supporting workers against unfair employers','Staying completely neutral in all labor disputes','Siding with business and using troops against workers','Passing immediate wage increase legislation'],correct:2,explanation:'Courts issued injunctions, and federal troops broke strikes (Pullman, Homestead). Government sided with capital.',concept:'<strong>Government + business vs. labor</strong> — the Gilded Age pattern.'},
+  {topic:'T5',stimulus:{text:'"While there is a lower class, I am in it; while there is a criminal element, I am of it; and while there is a soul in prison, I am not free."',source:'Eugene V. Debs, 1918'},q:'Debs\'s statement reflects his commitment to:',options:['Laissez-faire capitalism and individual success','Solidarity with all working and marginalized people','The American Liberty League\'s agenda','Isolationism and opposition to World War I'],correct:1,explanation:'Debs identified himself with the poorest and most oppressed, reflecting his socialist belief in class solidarity.',concept:'<strong>Debs = solidarity with the working class.</strong> Ran for president from prison.'},
+  {topic:'T5',q:'The AFL under Samuel Gompers differed from the Knights of Labor because the AFL:',options:['Welcomed all workers regardless of skill or background','Focused only on skilled workers and practical wage issues','Advocated for the overthrow of the capitalist system','Refused to organize any strikes or work stoppages'],correct:1,explanation:'Gompers focused on "bread and butter" issues for skilled craftsmen, unlike the Knights who welcomed everyone.',concept:'<strong>AFL = skilled workers + practical goals.</strong> Knights of Labor = all workers + broad reform.'},
+  {topic:'T5',q:'The Haymarket Affair (1886) damaged the labor movement because:',options:['Workers won their demands and disbanded their unions','The public linked organized labor with anarchist violence','It proved that strikes always led to higher wages','The government immediately passed pro-labor legislation'],correct:1,explanation:'A bomb killed police at a labor rally. Despite unclear evidence, the public blamed unions and anarchists, setting back labor organizing.',concept:'<strong>Haymarket</strong> = public feared labor = violence. Set back the entire movement.'},
+
+  // ═══ T6 IMPERIALISM (4) ═══
+  {topic:'T6',q:'The Spanish-American War made the U.S.:',options:['An isolationist nation avoiding world affairs','An imperial power with overseas territories','A weaker military force than before the war','An ally of Spain in the Pacific region'],correct:1,explanation:'The U.S. gained Puerto Rico, Guam, and the Philippines, becoming a colonial power.',concept:'<strong>1898 = America becomes an empire.</strong>'},
+  {topic:'T6',stimulus:{text:'"Speak softly and carry a big stick; you will go far."',source:'Theodore Roosevelt, 1901'},q:'Roosevelt\'s "big stick" diplomacy meant:',options:['Avoiding all foreign conflicts through strict neutrality','Negotiating peacefully but backing it with military force','Rejecting imperialism in favor of isolationism','Using economic sanctions instead of military power'],correct:1,explanation:'TR believed in diplomatic negotiation backed by a strong military — willing to use force if needed.',concept:'<strong>Big Stick = diplomacy + military power.</strong> Applied in Latin America and the Panama Canal.'},
+  {topic:'T6',q:'Yellow journalism contributed to the Spanish-American War by:',options:['Providing accurate and balanced reporting on events in Cuba','Publishing sensationalized stories that inflamed public opinion','Encouraging peaceful negotiations between the U.S. and Spain','Criticizing American imperialism and opposing the war'],correct:1,explanation:'Hearst and Pulitzer published exaggerated and inflammatory stories about Spanish atrocities in Cuba, pushing the public toward war.',concept:'<strong>Yellow journalism</strong> = sensationalism that helped drive the U.S. into war with Spain.'},
+  {topic:'T6',q:'The Roosevelt Corollary expanded the Monroe Doctrine by:',options:['Ending all U.S. involvement in Latin American affairs','Claiming the U.S. could intervene as "international police" in the Western Hemisphere','Inviting European nations to share control of the Caribbean','Granting independence to all U.S. territories in the Pacific'],correct:1,explanation:'TR declared the U.S. had the right to intervene in Latin American countries to maintain stability — essentially making America the hemisphere\'s police force.',concept:'<strong>Roosevelt Corollary:</strong> U.S. = "international police" in Latin America.'},
+
+  // ═══ T7 PROGRESSIVISM (4) ═══
+  {topic:'T7',q:'Muckrakers like Sinclair and Tarbell were important because:',options:['They ran for president on reform platforms','Their writing exposed abuses and drove legislation','They led violent strikes across industrial cities','They opposed all government intervention'],correct:1,explanation:'Sinclair\'s Jungle led to food safety laws. Tarbell exposed Standard Oil. Journalism drove Progressive reform.',concept:'<strong>Muckrakers = journalism as reform tool.</strong>'},
+  {topic:'T7',q:'The 19th Amendment was the result of:',options:['A single Congressional vote with no prior activism','Decades of protests, hunger strikes, and jailing of suffragists','A presidential executive order signed by Woodrow Wilson','A Supreme Court ruling that extended the 15th Amendment'],correct:1,explanation:'From the Seneca Falls Convention (1848) through decades of marches, hunger strikes, and imprisonment, women fought 72 years for the vote.',concept:'<strong>19th Amendment (1920)</strong> = 72 years of women\'s activism finally won the right to vote.'},
+  {topic:'T7',q:'Theodore Roosevelt\'s "Square Deal" focused on:',options:['Lowering taxes for wealthy industrialists and bankers','Trust-busting, consumer protection, and conservation','Ending women\'s suffrage and restricting immigration','Returning to laissez-faire policies of the Gilded Age'],correct:1,explanation:'TR\'s Square Deal attacked monopolies, protected consumers (Pure Food and Drug Act), and conserved millions of acres of public land.',concept:'<strong>Square Deal:</strong> Trust-busting + consumer protection + conservation.'},
+  {topic:'T7',q:'The 16th and 17th Amendments reflected Progressive goals by:',options:['Banning alcohol and giving women the right to vote','Creating an income tax and allowing direct election of senators','Abolishing slavery and granting citizenship to all people','Establishing Prohibition and creating the Federal Reserve'],correct:1,explanation:'The 16th (income tax) shifted the tax burden toward the wealthy. The 17th (direct election of senators) gave voters more power over government.',concept:'<strong>16th = income tax. 17th = direct election of senators.</strong> Both increased democratic accountability.'},
+
+  // ═══ T8 WORLD WAR I (4) ═══
+  {topic:'T8',q:'The U.S. entered WWI mainly due to:',options:['The assassination of Archduke Franz Ferdinand','Unrestricted submarine warfare and the Zimmermann Telegram','A direct attack on American mainland territory','A Congressional desire to join the League of Nations'],correct:1,explanation:'German U-boats and Germany\'s secret offer to Mexico pushed Wilson to ask for war.',concept:'<strong>Submarines + Zimmermann Telegram</strong> → U.S. enters WWI (1917).'},
+  {topic:'T8',stimulus:{text:'"The world must be made safe for democracy."',source:'Woodrow Wilson, War Message to Congress, April 1917'},q:'Wilson framed U.S. entry into WWI as:',options:['A fight for territorial expansion overseas','A moral crusade to protect democratic government','An economic opportunity to boost American trade','A defensive response to an attack on U.S. soil'],correct:1,explanation:'Wilson justified the war in idealistic terms — fighting for democracy, not territory or revenge.',concept:'<strong>Wilson\'s idealism:</strong> War as a moral crusade, not conquest.'},
+  {topic:'T8',q:'The Espionage and Sedition Acts during WWI were controversial because they:',options:['Gave soldiers the right to refuse to fight overseas','Allowed the government to jail people for criticizing the war','Required all citizens to buy government war bonds','Banned the production of weapons and military supplies'],correct:1,explanation:'These laws made it illegal to speak out against the war, the draft, or the government. Hundreds were imprisoned, including Eugene Debs.',concept:'<strong>Espionage + Sedition Acts</strong> = government crushed free speech during wartime.'},
+  {topic:'T8',q:'The U.S. Senate rejected the Treaty of Versailles primarily because:',options:['The treaty was too lenient on Germany after the war','Senators opposed joining the League of Nations, fearing it limited U.S. sovereignty','President Wilson refused to negotiate any changes to the treaty','The American public overwhelmingly supported isolationism'],correct:1,explanation:'Led by Senator Henry Cabot Lodge, opponents feared the League would commit the U.S. to foreign wars without Congressional approval.',concept:'<strong>Senate rejected Versailles</strong> → no League of Nations → U.S. retreated into isolationism.'},
+
+  // ═══ T9 ROARING TWENTIES (4) ═══
+  {topic:'T9',q:'The 1920s saw tension between:',options:['Northern and Southern states over tariffs only','Urban modernism and rural traditional values','Republicans and Democrats on foreign policy','Workers and farmers over minimum wage law'],correct:1,explanation:'Scopes Trial, Prohibition, KKK revival, immigration restriction — modern vs. traditional America.',concept:'<strong>1920s = urban vs. rural, modern vs. traditional.</strong>'},
+  {topic:'T9',q:'The Harlem Renaissance was significant because:',options:['It was a political campaign to elect Black leaders','It celebrated Black art, literature, and culture','It focused only on jazz and had no literary impact','It was organized by the federal government'],correct:1,explanation:'Hughes, Hurston, Ellington, Armstrong — a flowering of Black cultural pride and achievement.',concept:'<strong>Harlem Renaissance:</strong> Black pride in art, literature, jazz, poetry.'},
+  {topic:'T9',q:'Henry Ford\'s most significant impact on American society was:',options:['Inventing the automobile from scratch in 1903','Making cars affordable through assembly line mass production','Creating the first American labor union for autoworkers','Founding the Federal Reserve banking system'],correct:1,explanation:'Ford didn\'t invent the car but made it affordable. The Model T cost $260 by 1924, putting car ownership within reach of ordinary Americans.',concept:'<strong>Ford = assembly line + mass production</strong> → consumer economy + transformed American life.'},
+  {topic:'T9',q:'The economic prosperity of the 1920s was unstable because:',options:['The government heavily regulated all stock market activity','Wealth was evenly distributed across all social classes','Speculation, overproduction, and buying on credit created a fragile bubble','Most Americans saved their money instead of spending it'],correct:2,explanation:'Stock speculation, agricultural overproduction, consumer debt, and concentrated wealth created an economy that looked strong but was dangerously fragile.',concept:'<strong>1920s bubble:</strong> Speculation + overproduction + credit buying = crash waiting to happen.'},
+
+  // ═══ T10 DEPRESSION & NEW DEAL (4) ═══
+  {topic:'T10',q:'FDR\'s "Three R\'s" were:',options:['Rights, Revenue, Reform','Relief, Recovery, Reform','Regulation, Redistribution, Restoration','Rebuild, Restart, Restructure'],correct:1,explanation:'Relief (help now), Recovery (restart economy), Reform (prevent future crises).',concept:'<strong>Relief, Recovery, Reform.</strong>'},
+  {topic:'T10',stimulus:{text:'"The only thing we have to fear is fear itself."',source:'Franklin D. Roosevelt, First Inaugural Address, March 1933'},q:'FDR\'s statement was aimed at:',options:['Declaring war on a foreign enemy threatening America','Restoring public confidence during the banking crisis','Announcing a new military spending program','Criticizing Herbert Hoover\'s presidency directly'],correct:1,explanation:'FDR spoke during the worst of the bank panic. His goal was to calm the nation and restore trust.',concept:'<strong>FDR\'s first task = restore confidence.</strong> Bank holiday followed immediately.'},
+  {topic:'T10',q:'What ultimately ended the Great Depression?',options:['New Deal programs alone','Social Security payments','World War II mobilization','Supreme Court rulings'],correct:2,explanation:'WWII military spending achieved full employment. The New Deal provided relief but didn\'t end the Depression.',concept:'<strong>WWII ended it.</strong> New Deal legacy = expanded federal power + safety net.'},
+  {topic:'T10',q:'The Social Security Act (1935) was limited because it:',options:['Only lasted for three years before being repealed','Excluded domestic and farm workers, disproportionately hurting minorities','Provided benefits only to wealthy Americans over age 65','Was declared unconstitutional by the Supreme Court'],correct:1,explanation:'By excluding domestic servants and farmworkers — jobs disproportionately held by Black and Latino Americans — Social Security left out many of the most vulnerable.',concept:'<strong>Social Security\'s racial gap:</strong> Excluded domestic and farm workers = excluded many minorities.'},
+
+  // ═══ T11 WESTERN MIGRATION & NATIVE AMERICANS (5) ═══
+  {topic:'T11',q:'The Homestead Act (1862) encouraged westward migration by:',options:['Paying settlers a monthly salary to move west','Offering 160 acres of free land to anyone willing to farm it','Forcing Native Americans to relocate east of the Mississippi','Building free housing for all settlers in western territories'],correct:1,explanation:'The Homestead Act gave 160 acres to settlers who lived on and improved the land for five years. It drew millions westward.',concept:'<strong>Homestead Act</strong> = free land → massive westward migration.'},
+  {topic:'T11',q:'The Dawes Act (1887) was intended to:',options:['Preserve Native American tribal lands and sovereignty','Break up tribal lands and assimilate Native Americans into white culture','Grant Native Americans full U.S. citizenship and voting rights','Create new reservations with better resources for Native tribes'],correct:1,explanation:'The Dawes Act divided communal tribal land into individual plots, aiming to turn Native Americans into independent farmers. It resulted in massive land loss.',concept:'<strong>Dawes Act = forced assimilation.</strong> Broke up tribes, destroyed communal land, lost 2/3 of Native land.'},
+  {topic:'T11',q:'The Wounded Knee Massacre (1890) is significant because it:',options:['Was a major Native American military victory over the U.S. Army','Marked the end of armed Native American resistance on the Plains','Led to the immediate repeal of the Dawes Act by Congress','Was a peaceful protest that resulted in new treaty negotiations'],correct:1,explanation:'U.S. soldiers killed over 250 Lakota Sioux, including women and children. It symbolized the final, violent end of the Indian Wars.',concept:'<strong>Wounded Knee (1890)</strong> = end of Native armed resistance. The Indian Wars were over.'},
+  {topic:'T11',stimulus:{text:'"Kill the Indian in him, and save the man."',source:'Captain Richard Henry Pratt, founder of Carlisle Indian Industrial School, 1892'},q:'Pratt\'s statement reveals that the goal of Indian boarding schools was to:',options:['Educate Native children while preserving their cultural traditions','Destroy Native cultures and force assimilation into white American society','Train Native Americans to serve as leaders of their own tribal governments','Provide Native children with the same education as white children'],correct:1,explanation:'Boarding schools like Carlisle forcibly stripped Native children of their languages, religions, and cultural identities, aiming to erase Native culture entirely.',concept:'<strong>Boarding schools = cultural destruction.</strong> Children taken from families, forbidden to speak their languages.'},
+  {topic:'T11',q:'The Transcontinental Railroad (1869) affected Native Americans primarily by:',options:['Providing jobs and economic opportunities for tribal nations','Enabling faster destruction of buffalo herds and increased white settlement','Having no significant impact on Native life or territory','Creating new reservations along the railroad routes'],correct:1,explanation:'The railroad brought settlers, hunters, and the military into Native lands. Buffalo — the foundation of Plains Indian life — were slaughtered by the millions.',concept:'<strong>Railroad = buffalo destruction + white settlement</strong> → devastation of Plains Indian way of life.'},
+];
+
+const FLASHCARDS=[
+  {front:'Mark Twain\'s term — gold-plated but corrupt underneath. Rapid growth + extreme inequality + political corruption.',back:'Gilded Age?'},
+  {front:'Same people (Carnegie, Rockefeller). Robber baron = exploited workers. Captain = built economy + philanthropy.',back:'Robber Baron vs. Captain of Industry?'},
+  {front:'"Separate but equal" is constitutional. Legalized Jim Crow segregation for 58 years.',back:'Plessy v. Ferguson (1896)?'},
+  {front:'Vertical (Carnegie): control every step of production. Horizontal (Rockefeller): buy out all competitors.',back:'Vertical vs. Horizontal Integration?'},
+  {front:'First race-based immigration ban. Barred Chinese laborers 60+ years.',back:'Chinese Exclusion Act (1882)?'},
+  {front:'Jane Addams, 1889, Chicago. Settlement house offering education, childcare, healthcare to immigrants.',back:'Hull House?'},
+  {front:'Knights = all workers welcome. AFL (Gompers) = skilled workers only, "bread and butter" issues.',back:'AFL vs. Knights of Labor?'},
+  {front:'Bomb at Chicago labor rally. Set back the entire labor movement.',back:'Haymarket (1886)?'},
+  {front:'U.S. gains Philippines, Puerto Rico, Guam. America becomes imperial. "Remember the Maine!"',back:'Spanish-American War (1898)?'},
+  {front:'Negotiate peacefully but back it with military force. Applied in Latin America + Panama Canal.',back:'TR\'s "Big Stick"?'},
+  {front:'Sinclair (Jungle/meatpacking), Tarbell (Standard Oil), Riis (slums). Journalism drove Progressive reform.',back:'Muckrakers?'},
+  {front:'16th = income tax. 17th = direct election of senators. 18th = Prohibition. 19th = women\'s vote.',back:'16th–19th Amendments?'},
+  {front:'Unrestricted submarine warfare + Zimmermann Telegram (1917). Wilson: "make the world safe for democracy."',back:'U.S. enters WWI — why?'},
+  {front:'Harsh on Germany: war guilt + reparations. Senate rejected it — U.S. never joined League of Nations.',back:'Treaty of Versailles?'},
+  {front:'Urban vs. rural: Scopes Trial, Prohibition, KKK revival, Immigration Act 1924, Red Scare.',back:'1920s cultural tensions?'},
+  {front:'Black cultural flowering: Hughes, Hurston, Ellington, Armstrong. Art, jazz, literature, poetry.',back:'Harlem Renaissance?'},
+  {front:'Speculation, overproduction, bank failures, uneven wealth, tight money, Smoot-Hawley.',back:'Causes of Great Depression?'},
+  {front:'Bank holiday then 15 bills passed. FDIC, CCC, AAA, TVA, NRA. Relief, Recovery, Reform.',back:'FDR\'s First 100 Days?'},
+  {front:'Pensions + unemployment + child aid. Excluded domestic/farm workers. Still the safety net today.',back:'Social Security (1935)?'},
+  {front:'No — WWII did. Legacy: expanded federal power, safety net, New Deal Coalition.',back:'Did the New Deal end the Depression?'},
+  {front:'Offered 160 acres free to settlers willing to farm it. Drew millions west.',back:'Homestead Act (1862)?'},
+  {front:'Broke up tribal lands into individual plots. Aimed to assimilate Native Americans. Lost 2/3 of Native land.',back:'Dawes Act (1887)?'},
+  {front:'U.S. soldiers killed 250+ Lakota Sioux. Marked the end of armed Native resistance on the Plains.',back:'Wounded Knee Massacre (1890)?'},
+  {front:'Forced Native children to abandon languages and cultures. "Kill the Indian, save the man."',back:'Indian Boarding Schools (Carlisle)?'},
+];
+// ═══════════════════════════════════════════
+// STATE — localStorage persistence
+// ═══════════════════════════════════════════
+const STORAGE_KEY='apush1865_state';
+let state={coins:0,streak:0,collected:[],pendingPacks:0,missedQs:[],totalCorrect:0};
+let quizState={},fcIndex=0,collectionFilter='all';
+
+function saveState(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(state))}catch(e){}}
+function loadState(){try{const s=localStorage.getItem(STORAGE_KEY);if(s){state=JSON.parse(s);if(!state.missedQs)state.missedQs=[];}}catch(e){}}
+
+function uniqueCollected(){return new Set(state.collected)}
+function allCollected(){return uniqueCollected().size>=COLLECTIBLE_CARDS.length}
+function canOpenPack(){return !allCollected()&&(state.pendingPacks>0||state.coins>=PACK_COST)}
+function updateUI(){
+  document.getElementById('coinCount').textContent=state.coins;
+  document.getElementById('streakCount').textContent=state.streak;
+  const b=document.getElementById('navCardsBadge');
+  if(state.pendingPacks>0&&!allCollected()){b.classList.remove('hidden');b.textContent=state.pendingPacks}
+  else{b.classList.add('hidden')}
+}
+
+// ═══════════════════════════════════════════
+// CARD RENDERING — Pokemon style with 200px portrait
+// ═══════════════════════════════════════════
+function cardImgHTML(id){
+  const url=getCardImg(id);
+  const card=COLLECTIBLE_CARDS.find(c=>c.id===id);
+  const el=ELEMENTS[card.element];
+  if(url){
+    return `<img src="${url}" alt="${card.name}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="img-fallback" style="display:none">${el.icon}</div>`;
+  }
+  return `<div class="img-fallback">${el.icon}</div>`;
+}
+
+function buildPokeCard(card,isNew){
+  const r=RARITY_CONFIG[card.rarity];
+  const idx=COLLECTIBLE_CARDS.indexOf(card)+1;
+  const el=ELEMENTS[card.element];
+  const stars={common:'★',uncommon:'★★',rare:'★★★',epic:'★★★★',legendary:'★★★★★',mythical:'✦✦✦✦✦✦'}[card.rarity];
+  const isMythical=card.rarity==='mythical';
+
+  return `<div class="poke-card ${isMythical?'mythical-card':''}" style="background:${r.color}">
+    ${isNew?'<div class="new-badge">NEW!</div>':''}
+    <div class="poke-card-inner">
+      <div class="poke-card-header">
+        <div class="poke-card-name">${card.name}</div>
+        <div class="poke-card-hp">HP ${card.hp}</div>
+        <div class="poke-card-element">${el.icon}</div>
+      </div>
+      <div class="poke-card-portrait">${cardImgHTML(card.id)}</div>
+      <div class="poke-card-type-bar">
+        <div class="poke-card-type-label" style="background:${r.color}">${card.type==='person'?'Figure':'Event'}</div>
+        <div class="poke-card-element-label">${el.icon} ${el.name}</div>
+      </div>
+      <div class="poke-card-info">
+        <div class="poke-card-title">${card.title}</div>
+        <div class="poke-card-years">${card.years}</div>
+        <div class="poke-card-fact">${card.fact}</div>
+      </div>
+      <div class="poke-card-footer">
+        <span class="poke-card-rarity-stars" style="color:${r.color}">${stars}</span>
+        <span style="color:${r.color};font-weight:700">${r.label}</span>
+        <span class="poke-card-number">${String(idx).padStart(3,'0')}/${COLLECTIBLE_CARDS.length}</span>
+      </div>
+    </div>
+  </div>`;
+}
+
+// ═══════════════════════════════════════════
+// HOME SCREEN
+// ═══════════════════════════════════════════
+function renderHome(){
+  const uc=uniqueCollected();
+  const recent=[...uc].slice(-5).map(id=>COLLECTIBLE_CARDS.find(c=>c.id===id)).filter(Boolean);
+
+  document.getElementById('homeScreen').innerHTML=`
+    <div class="hero-card">
+      <div class="era-tag">Periods 5–7</div>
+      <h2>Reconstruction to New Deal</h2>
+      <p class="sub">Master 75 years of American history — from the Gilded Age through the Great Depression.</p>
+    </div>
+
+    ${allCollected()?`<div class="collection-complete"><h3>🏆 Collection Complete!</h3><p>All ${COLLECTIBLE_CARDS.length} cards!</p></div>`
+    :canOpenPack()?`<div class="mode-btn" onclick="openPack()" style="margin-bottom:20px;border-color:rgba(180,83,9,0.2);background:linear-gradient(135deg,rgba(217,119,6,0.05),rgba(147,51,234,0.03))">
+      <div class="icon">🎴</div>
+      <div><h3 style="color:var(--gold)">Open Card Pack!${state.pendingPacks>0?' <span style="font-size:12px;opacity:.6">('+state.pendingPacks+' ready)</span>':''}</h3>
+      <p>Cost: ${PACK_COST} coins — You have ${state.coins} 🪙</p></div></div>`:''}
+
+    <div class="collection-preview" onclick="showCollection()">
+      <div class="cp-top"><h3>🃏 Your Collection</h3><span class="cp-count">${uc.size}/${COLLECTIBLE_CARDS.length}</span></div>
+      <div class="cp-mini-cards">
+        ${recent.map(c=>{const r=RARITY_CONFIG[c.rarity];const url=getCardImg(c.id);
+          return url?`<div class="cp-mini-card" style="background:${r.bg};border-color:${r.border}"><img src="${url}" onerror="this.replaceWith(document.createTextNode('${ELEMENTS[c.element].icon}'))"></div>`
+          :`<div class="cp-mini-card" style="background:${r.bg};border-color:${r.border}">${ELEMENTS[c.element].icon}</div>`;
+        }).join('')}
+        ${Array(Math.max(0,5-recent.length)).fill(0).map(()=>`<div class="cp-mini-empty">?</div>`).join('')}
+      </div>
+    </div>
+
+    <div class="section-label">📖 Study Topics</div>
+    <div class="topic-grid">
+      ${TOPICS.map(t=>`<div class="topic-card" onclick="showStudy('${t.id}')">
+        <div class="topic-icon" style="background:${t.color}10">${t.icon}</div>
+        <div class="topic-info"><h3>${t.title}</h3><p>${t.content.length} concepts</p></div>
+        <div class="topic-unit">${t.id}</div></div>`).join('')}
+    </div>
+
+    <div class="section-label">🎮 Review</div>
+    <div class="mode-grid">
+      <button class="mode-btn" onclick="startQuiz('all')"><div class="icon">⚡</div><div><h3>Quick Quiz</h3><p>10 questions — 1 🪙 each</p></div></button>
+      <button class="mode-btn" onclick="startFlashcards()"><div class="icon">🃏</div><div><h3>Flashcards</h3><p>Key terms and concepts</p></div></button>
+      <button class="mode-btn" onclick="startQuiz('missed')"><div class="icon">🎯</div><div><h3>Missed Questions</h3><p>Retry wrong answers</p></div></button>
+    </div>`;
+}
+
+// ═══════════════════════════════════════════
+// NAVIGATION
+// ═══════════════════════════════════════════
+function showScreen(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  if(id==='homeScreen')document.getElementById('navHome').classList.add('active');
+  else if(id==='quizScreen'||id==='resultsScreen')document.getElementById('navQuiz').classList.add('active');
+  else if(id==='collectionScreen')document.getElementById('navCards').classList.add('active');
+  else if(id==='flashcardScreen')document.getElementById('navFlash').classList.add('active');
+  window.scrollTo(0,0);
+}
+function goHome(){renderHome();showScreen('homeScreen')}
+
+function showStudy(tid){
+  const t=TOPICS.find(x=>x.id===tid);
+  document.getElementById('studyScreen').innerHTML=`
+    <button class="back-btn" onclick="goHome()">← Back</button>
+    <div class="section-label">${t.icon} ${t.title}</div>
+    ${t.content.map(c=>`<div class="study-card"><h3>${c.heading}</h3><p>${c.text}</p></div>`).join('')}
+    <button class="next-btn mt-12" onclick="startQuiz('${tid}')">⚡ Quiz This Topic</button>`;
+  showScreen('studyScreen');
+}
+
+// ═══════════════════════════════════════════
+// QUIZ — shuffled answers + stimulus support
+// ═══════════════════════════════════════════
+function startQuiz(mode){
+  let pool;
+  if(mode==='missed'){
+    pool=state.missedQs.length>0
+      ?state.missedQs.map(mq=>QUESTIONS.find(q=>q.q===mq)).filter(Boolean)
+      :[...QUESTIONS];
+  } else if(mode==='all'){
+    pool=[...QUESTIONS];
+  } else {
+    pool=QUESTIONS.filter(q=>q.topic===mode);
+  }
+  pool=shuffle(pool).slice(0,10);
+  quizState={questions:pool,current:0,score:0,answered:false,wrongThisRound:[],coinsEarned:0};
+  renderQuestion();
+  showScreen('quizScreen');
+}
+
+function renderQuestion(){
+  const qs=quizState,q=qs.questions[qs.current];
+  const pct=(qs.current/qs.questions.length)*100;
+  const t=TOPICS.find(x=>x.id===q.topic);
+
+  // Shuffle options, tracking which is correct
+  const indexed=q.options.map((text,i)=>({text,isCorrect:i===q.correct}));
+  const shuffled=shuffle(indexed);
+  qs.currentShuffled=shuffled;
+
+  const stimHTML=q.stimulus
+    ?`<div class="stimulus-box">"${q.stimulus.text}"<div class="stimulus-source">— ${q.stimulus.source}</div></div>`
+    :'';
+
+  document.getElementById('quizScreen').innerHTML=`
+    <div class="quiz-progress">
+      <div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>
+      <div class="progress-text">${qs.current+1}/${qs.questions.length}</div>
+    </div>
+    <div class="quiz-question-card">
+      <div class="quiz-topic-tag">${t?t.title:'APUSH'} <span class="coin-reward-inline">+1 🪙</span></div>
+      ${stimHTML}
+      <div class="quiz-question">${q.q}</div>
+    </div>
+    <div class="answer-options">
+      ${shuffled.map((opt,i)=>`<button class="answer-btn" onclick="selectAnswer(${i})">
+        <span class="answer-letter">${'ABCD'[i]}</span><span>${opt.text}</span>
+      </button>`).join('')}
+    </div>
+    <div id="feedbackArea"></div>`;
+  qs.answered=false;
+}
+
+function selectAnswer(idx){
+  if(quizState.answered)return;
+  quizState.answered=true;
+  const q=quizState.questions[quizState.current];
+  const shuffled=quizState.currentShuffled;
+  const isCorrect=shuffled[idx].isCorrect;
+  const correctIdx=shuffled.findIndex(o=>o.isCorrect);
+
+  document.querySelectorAll('.answer-btn').forEach((b,i)=>{
+    b.classList.add('locked');
+    if(i===correctIdx)b.classList.add('correct');
+    else if(i===idx&&!isCorrect)b.classList.add('wrong');
+    else b.classList.add('dimmed');
+  });
+
+  if(isCorrect){
+    quizState.score++;quizState.coinsEarned++;
+    state.coins++;state.streak++;state.totalCorrect++;
+    if(state.totalCorrect%3===0&&!allCollected())state.pendingPacks++;
+  } else {
+    state.streak=0;
+    quizState.wrongThisRound.push(q);
+    if(!state.missedQs.includes(q.q))state.missedQs.push(q.q);
+  }
+  updateUI();saveState();
+
+  document.getElementById('feedbackArea').innerHTML=`
+    <div class="explanation-card ${isCorrect?'':'wrong-exp'}">
+      <h4>${isCorrect?'✅ Correct! <span class="coin-reward-inline">+1 🪙</span>':'❌ Not Quite'}</h4>
+      <p>${q.explanation}</p>
+      <div class="key-concept">💡 ${q.concept}</div>
+    </div>
+    <button class="next-btn" onclick="nextQuestion()">
+      ${quizState.current<quizState.questions.length-1?'Next Question →':'See Results 🎉'}
+    </button>`;
+}
+
+function nextQuestion(){
+  quizState.current++;
+  if(quizState.current>=quizState.questions.length)showResults();
+  else{renderQuestion();window.scrollTo(0,0);}
+}
+
+function showResults(){
+  const qs=quizState;
+  const pct=Math.round((qs.score/qs.questions.length)*100);
+  let msg,sub;
+  if(pct>=90){msg='🔥 Outstanding!';sub='AP exam ready!';}
+  else if(pct>=70){msg='💪 Solid!';sub='Review missed topics.';}
+  else if(pct>=50){msg='📚 Getting There';sub='Focus on missed concepts.';}
+  else{msg='🌱 Keep Studying';sub='Review materials and retry.';}
+
+  const mt=[...new Set(qs.wrongThisRound.map(q=>q.topic))].map(id=>TOPICS.find(t=>t.id===id)).filter(Boolean);
+
+  document.getElementById('resultsScreen').innerHTML=`
+    <div class="results-card">
+      <div class="results-score">${pct}%</div>
+      <div class="results-label">${qs.score}/${qs.questions.length}</div>
+      <div class="results-message">${msg}</div>
+      <div class="results-sub">${sub}</div>
+      <div class="results-breakdown">
+        <div class="breakdown-item"><div class="num" style="color:var(--correct)">${qs.score}</div><div class="lbl">Correct</div></div>
+        <div class="breakdown-item"><div class="num" style="color:var(--gold)">${qs.coinsEarned}</div><div class="lbl">Coins</div></div>
+        <div class="breakdown-item"><div class="num" style="color:var(--accent)">${state.streak}</div><div class="lbl">Streak</div></div>
+      </div>
+    </div>
+    ${canOpenPack()?`<button class="next-btn mb-16" onclick="openPack()" style="background:linear-gradient(135deg,#d97706,#b45309)">🎴 Open Card Pack!</button>`
+    :allCollected()?'<div style="text-align:center;padding:12px;font-size:13px;margin-bottom:16px;color:var(--gold)">🏆 Complete!</div>'
+    :`<div style="text-align:center;padding:12px;color:var(--text3);font-size:13px;margin-bottom:16px"><strong style="color:var(--gold)">${state.coins}/${PACK_COST}</strong> coins to next pack</div>`}
+    ${mt.length?`<div class="section-label">📖 Review</div><div class="missed-topics">${mt.map(t=>`<div class="missed-topic-card" onclick="showStudy('${t.id}')"><h4>${t.icon} ${t.title}</h4><p>Tap to review</p></div>`).join('')}</div>`:''}
+    <div class="btn-row"><button class="btn-secondary" onclick="goHome()">Home</button><button class="next-btn" onclick="startQuiz('all')">Play Again</button></div>`;
+  showScreen('resultsScreen');
+}
+
+// ═══════════════════════════════════════════
+// CARD PACKS — no dupes
+// ═══════════════════════════════════════════
+function openPack(){
+  if(allCollected())return;
+  if(state.pendingPacks>0)state.pendingPacks--;
+  else if(state.coins>=PACK_COST)state.coins-=PACK_COST;
+  else return;
+  updateUI();saveState();
+
+  document.getElementById('packOverlay').innerHTML=`
+    <div class="pack-overlay" id="packOv">
+      <div class="pack-3d-wrapper">
+        <div class="pack-card-3d" id="packCard" onclick="revealCard()">
+          <div class="pack-face pack-front">
+            <div class="pack-emblem">🗽</div>
+            <h3>American Archives</h3>
+            <p>1865–1939 Edition</p>
+            <div class="pack-tap">TAP TO OPEN</div>
+          </div>
+        </div>
+      </div>
+    </div>`;
+}
+
+function revealCard(){
+  const pc=document.getElementById('packCard');
+  if(pc.classList.contains('opening'))return;
+  pc.classList.add('opening');
+
+  const card=rollCard();
+  state.collected.push(card.id);
+  updateUI();saveState();
+
+  setTimeout(()=>{
+    const r=RARITY_CONFIG[card.rarity];
+    spawnParticles(r.color);
+    document.getElementById('packOv').innerHTML=`
+      <div class="card-reveal">
+        <div class="reveal-rarity-label" style="color:${r.color}">${r.label} · ${card.type==='person'?'Figure':'Event'}</div>
+        ${buildPokeCard(card,true)}
+        <div class="reveal-buttons"><button class="reveal-btn-done" onclick="closePack()">Awesome! ✨</button></div>
+      </div>`;
+  },700);
+}
+
+function rollCard(){
+  const owned=uniqueCollected();
+  const unc=COLLECTIBLE_CARDS.filter(c=>!owned.has(c.id));
+  if(!unc.length)return COLLECTIBLE_CARDS[0];
+  const rp={};
+  unc.forEach(c=>{if(!rp[c.rarity])rp[c.rarity]=[];rp[c.rarity].push(c);});
+  let tw=0;const ent=[];
+  for(const[r,cards]of Object.entries(rp)){const w=RARITY_CONFIG[r].weight;ent.push({cards,weight:w});tw+=w;}
+  let roll=Math.random()*tw;
+  for(const e of ent){roll-=e.weight;if(roll<=0)return e.cards[Math.floor(Math.random()*e.cards.length)];}
+  return unc[Math.floor(Math.random()*unc.length)];
+}
+
+function closePack(){document.getElementById('packOverlay').innerHTML='';renderHome();updateUI();}
+
+function spawnParticles(color){
+  const c=document.getElementById('particles');
+  for(let i=0;i<30;i++){
+    const p=document.createElement('div');
+    p.className='particle';p.style.left='50%';p.style.top='50%';
+    p.style.background=color;
+    p.style.setProperty('--dx',`${(Math.random()-0.5)*350}px`);
+    p.style.setProperty('--dy',`${(Math.random()-0.5)*450}px`);
+    p.style.width=`${4+Math.random()*8}px`;p.style.height=p.style.width;
+    c.appendChild(p);setTimeout(()=>p.remove(),1000);
+  }
+}
+
+// ═══════════════════════════════════════════
+// COLLECTION SCREEN
+// ═══════════════════════════════════════════
+function showCollection(){renderCollection();showScreen('collectionScreen');}
+
+function renderCollection(){
+  const uc=uniqueCollected();
+  const rars=['all','common','uncommon','rare','epic','legendary','mythical'];
+  const filt=collectionFilter==='all'?COLLECTIBLE_CARDS:COLLECTIBLE_CARDS.filter(c=>c.rarity===collectionFilter);
+
+  document.getElementById('collectionScreen').innerHTML=`
+    <button class="back-btn" onclick="goHome()">← Back</button>
+    <div class="collection-header">
+      <h2>Your Collection</h2>
+      <p>${uc.size}/${COLLECTIBLE_CARDS.length}${allCollected()?' — 🏆 Complete!':''}</p>
+    </div>
+    <div class="rarity-filter">
+      ${rars.map(r=>`<button class="rf-btn ${collectionFilter===r?'active':''}" onclick="setFilter('${r}')">
+        ${r==='all'?'All':RARITY_CONFIG[r]?.label||r}${r!=='all'?` (${COLLECTIBLE_CARDS.filter(c=>c.rarity===r).filter(c=>uc.has(c.id)).length}/${COLLECTIBLE_CARDS.filter(c=>c.rarity===r).length})`:''}
+      </button>`).join('')}
+    </div>
+    <div class="card-collection-grid">
+      ${filt.map(card=>{
+        const owned=uc.has(card.id);
+        const r=RARITY_CONFIG[card.rarity];
+        const el=ELEMENTS[card.element];
+        if(owned){
+          const url=getCardImg(card.id);
+          const imgTag=url?`<img class="cc-img" src="${url}" onerror="this.style.display='none'">`:`<div style="font-size:28px;margin-bottom:6px">${el.icon}</div>`;
+          return `<div class="cc-item" style="background:${r.color}" onclick="showCardDetail('${card.id}')">
+            <div class="cc-item-inner">
+              ${imgTag}
+              <div class="cc-name">${card.name}</div>
+              <div class="cc-rarity" style="color:${r.color}">${r.label}</div>
+              <div class="cc-hp">${el.icon} HP ${card.hp}</div>
+            </div></div>`;
+        } else {
+          return `<div class="cc-item locked" style="background:${r.color}">
+            <div class="cc-item-inner">
+              <div style="font-size:24px;opacity:.3;margin-bottom:6px">🔒</div>
+              <div class="cc-name" style="color:var(--text3)">???</div>
+              <div class="cc-rarity" style="color:${r.color}">${r.label}</div>
+            </div></div>`;
+        }
+      }).join('')}
+    </div>`;
+}
+
+function setFilter(f){collectionFilter=f;renderCollection();}
+
+function showCardDetail(id){
+  const card=COLLECTIBLE_CARDS.find(c=>c.id===id);
+  if(!card)return;
+  const r=RARITY_CONFIG[card.rarity];
+  document.getElementById('packOverlay').innerHTML=`
+    <div class="pack-overlay" onclick="this.parentElement.innerHTML=''">
+      <div class="card-reveal" onclick="event.stopPropagation()">
+        <div class="reveal-rarity-label" style="color:${r.color}">${r.label} · ${card.type==='person'?'Figure':'Event'}</div>
+        ${buildPokeCard(card,false)}
+        <div class="reveal-buttons"><button class="reveal-btn-done" onclick="document.getElementById('packOverlay').innerHTML=''">Close</button></div>
+      </div>
+    </div>`;
+}
+
+// ═══════════════════════════════════════════
+// FLASHCARDS — definition on front, term on back
+// ═══════════════════════════════════════════
+function startFlashcards(){fcIndex=0;renderFlashcard();showScreen('flashcardScreen');}
+
+function renderFlashcard(){
+  const fc=FLASHCARDS[fcIndex];
+  document.getElementById('flashcardScreen').innerHTML=`
+    <button class="back-btn" onclick="goHome()">← Back</button>
+    <div class="progress-text mb-16" style="text-align:center">Card ${fcIndex+1}/${FLASHCARDS.length}</div>
+    <div class="flashcard-container">
+      <div class="flashcard" onclick="this.classList.toggle('flipped')">
+        <div class="flashcard-face flashcard-front">
+          <p>${fc.front.replace(/\n/g,'<br>')}</p>
+          <div class="flashcard-hint">Tap to reveal the term</div>
+        </div>
+        <div class="flashcard-face flashcard-back">
+          <h3>${fc.back}</h3>
+        </div>
+      </div>
+    </div>
+    <div class="fc-nav">
+      <button class="fc-prev" onclick="fcPrev()" ${fcIndex===0?'disabled style="opacity:.3"':''}>← Prev</button>
+      <button class="fc-next" onclick="fcNext()" ${fcIndex===FLASHCARDS.length-1?'disabled style="opacity:.3"':''}>Next →</button>
+    </div>`;
+}
+
+function fcNext(){if(fcIndex<FLASHCARDS.length-1){fcIndex++;renderFlashcard();}}
+function fcPrev(){if(fcIndex>0){fcIndex--;renderFlashcard();}}
+
+// ═══════════════════════════════════════════
+// UTILITIES
+// ═══════════════════════════════════════════
+function shuffle(a){const b=[...a];for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]];}return b;}
+
+// ═══════════════════════════════════════════
+// INIT — load images then start
+// ═══════════════════════════════════════════
+async function init(){
+  loadState();
+  const count=await loadImages();
+  console.log('Loaded '+count+' images');
+  updateUI();
+  renderHome();
+}
+init();
+</script></body></html>
